@@ -1,0 +1,35 @@
+<h2 mat-dialog-title *ngIf= "data.id == 0">Registrar</h2>
+<h2 mat-dialog-title *ngIf= "data.id != 0">Actualizar</h2>
+
+<mat-dialog-content>
+
+  <form class="example-container" [formGroup]="formMedico" #frmMedico="ngForm" (ngSubmit)="operar()">
+    <div [hidden]="true">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="ID" formControlName="idMedico">
+        </mat-form-field>
+    </div>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Nombres" minlength="3" formControlName="nombres">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Apellidos" formControlName="apellidos">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="CMP" formControlName="cmp" type="number">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="fotoUrl" formControlName="fotoUrl">
+    </mat-form-field>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <button mat-button mat-dialog-close color = "warn">Cancelar</button>
+  <button mat-button color = "primary" *ngIf= "data.id == 0" (click)= "operar()" [disabled]="frmMedico.invalid">Guardar</button>
+  <button mat-button color = "primary" *ngIf= "data.id != 0" (click)= "operar()" [disabled]="frmMedico.invalid">Actualizar</button>
+</mat-dialog-actions>
