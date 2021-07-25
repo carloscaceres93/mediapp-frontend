@@ -20,7 +20,7 @@ export class SignosComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource: MatTableDataSource<Signos>;
-  displayedColumns: string[] = ['paciente', 'temperatura', 'pulso', 'ritmo', 'acciones'];
+  displayedColumns: string[] = ['paciente','fecha', 'temperatura', 'pulso', 'ritmo', 'acciones'];
   cantidad: number = 0;
   constructor(
     private signosService: SignosService,

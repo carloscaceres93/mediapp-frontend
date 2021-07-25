@@ -19,6 +19,12 @@
     </mat-autocomplete>
 </mat-form-field>
 
+<mat-form-field>
+  <input matInput [matDatepicker]="picker" placeholder="Escoge una fecha" formControlName="fecha">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
 <mat-form-field class="example-full-width">
   <input matInput placeholder="Temperatura" required formControlName="temperatura">
 </mat-form-field>

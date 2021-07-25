@@ -6,5 +6,7 @@ export class Signos {
   temperatura: string;
   pulso: string;
   ritmo: string;
+  fecha: string;
   paciente: Paciente;
+
 }

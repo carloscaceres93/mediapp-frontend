@@ -7,6 +7,7 @@ import { Paciente } from 'src/app/_model/paciente';
 import { Signos } from 'src/app/_model/signos';
 import { PacienteService } from 'src/app/_service/paciente.service';
 import { SignosService } from 'src/app/_service/signos.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-signos-edicion',
@@ -42,6 +43,7 @@ export class SignosEdicionComponent implements OnInit {
     this.formSigno = new FormGroup({
       idSigno: new FormControl(0),
       paciente: this.myControlPaciente,
+      fecha:  new FormControl('', Validators.required),
       temperatura: new FormControl('', Validators.required),
       pulso: new FormControl('', Validators.required),
       ritmo: new FormControl('', Validators.required)
@@ -72,10 +74,11 @@ export class SignosEdicionComponent implements OnInit {
   registrar() {
     let signo = new Signos();
     signo.paciente = this.formSigno.value['paciente'];
+    signo.fecha = moment(this.formSigno.value['fecha']).format('YYYY-MM-DD')
     signo.pulso = this.formSigno.value['pulso'];
     signo.ritmo = this.formSigno.value['ritmo'];
     signo.temperatura = this.formSigno.value['temperatura'];
-
+    console.log(signo);
     if(this.validar){
       signo.idSigno = this.id;
       this.signoService.modificar(signo).pipe(switchMap(()=>{
@@ -104,6 +107,7 @@ export class SignosEdicionComponent implements OnInit {
           this.formSigno.setValue({
             idSigno: signo.idSigno,
             paciente: signo.paciente,
+            fecha: signo.fecha,
             temperatura: signo.temperatura,
             pulso: signo.pulso,
             ritmo: signo.ritmo
