@@ -1,1 +1,43 @@
-<p>signos-edicion works!</p>
+<mat-toolbar>Gestionar Signos</mat-toolbar>
+
+<form class="example-container" [formGroup]="formSigno" #consultaForm="ngForm" (ngSubmit)="registrar()">
+
+  <div [hidden]="true">
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="ID" required formControlName="idSigno">
+    </mat-form-field>
+</div>
+
+  <mat-form-field>
+    <input type="text" placeholder="Paciente" matInput [matAutocomplete]="autoPaciente"
+        [formControl]="myControlPaciente" formControlName="paciente">
+
+    <mat-autocomplete #autoPaciente="matAutocomplete" [displayWith]="mostrarPaciente" >
+        <mat-option *ngFor="let p of pacientesFiltrados$ | async" [value]="p">
+            {{ p.nombres }} {{p.apellidos}}
+        </mat-option>
+    </mat-autocomplete>
+</mat-form-field>
+
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="Temperatura" required formControlName="temperatura">
+</mat-form-field>
+
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="Pulso" required formControlName="pulso">
+</mat-form-field>
+
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="Ritmo" required formControlName="ritmo">
+</mat-form-field>
+
+<button mat-raised-button color="primary" type="submit" [disabled]="formSigno.invalid">
+  <mat-icon>done</mat-icon>
+  <span>Aceptar</span>
+</button>
+<button mat-raised-button color="accent" routerLink='/pages/signo' type="button">
+  <mat-icon>close</mat-icon>
+  <span>Cancelar</span>
+</button>
+
+</form>

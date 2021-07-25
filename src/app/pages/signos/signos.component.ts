@@ -26,7 +26,7 @@ export class SignosComponent implements OnInit {
     private signosService: SignosService,
     public dialog: MatDialog,
     private snackBar: MatSnackBar,
-    public route: ActivatedRoute,
+    public route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {

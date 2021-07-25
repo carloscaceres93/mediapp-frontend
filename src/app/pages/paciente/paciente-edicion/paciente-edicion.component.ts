@@ -35,6 +35,7 @@ export class PacienteEdicionComponent implements OnInit {
     this.route.params.subscribe((data: Params) => {
       this.id = data['id'];
       this.edicion = data['id'] != null;
+      console.log(this.id)
       this.initForm();
     })
   }
